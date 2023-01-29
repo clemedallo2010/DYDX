@@ -3,6 +3,7 @@ from func_connections import connect_dydx
 from func_private import abort_all_positions
 from func_public import construct_market_prices
 from func_cointegration import store_cointegration_results
+from func_enty_pairs import open_positions
 
 if __name__ == "__main__":
 
@@ -37,10 +38,23 @@ if FIND_COINTEGRATED:
  # Store Cointegrated pairs
     try: 
         print("Storing cointagrated pairs ...")
-        stores_result = store_cointegration_results(df_markets_prices)
-        if stores_results != "Saved":
+        stores_result = store_cointegration_results(df_market_prices)
+        if stores_result != "saved":
           print("Error saving cointegrated pairs")
           exit(1)
     except Exception as e:
       print("Error saving cointegrated pairs", e)
       exit(1)
+
+
+
+
+
+
+if PLACE_TRADES:
+  try: 
+      print("finding trading opportunities ...")
+      open_positions(client)
+  except Exception as e:
+    print("Error trading pairs", e)
+    exit(1)
