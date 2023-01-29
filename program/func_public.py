@@ -89,7 +89,7 @@ def construct_market_prices(client):
   df = pd.DataFrame(close_prices)
   df.set_index("datetime", inplace=True)
 
-  # Append other prices to DataFrame
+    # Append other prices to DataFrame
   # You can limit the amount to loop though here to save time in development
   for market in tradeable_markets[1:]:
     close_prices_add = get_candles_historical(client, market)
@@ -106,4 +106,4 @@ def construct_market_prices(client):
     df.drop(columns=nans, inplace=True)
 
   # Return result
-  return df
+    return df
