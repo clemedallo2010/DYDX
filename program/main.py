@@ -1,4 +1,4 @@
-from constants import ABORT_ALL_POSITIONS, FIND_COINTEGRATED
+from constants import ABORT_ALL_POSITIONS, FIND_COINTEGRATED, PLACE_TRADES, MANAGE_EXITS
 from func_connections import connect_dydx
 from func_private import abort_all_positions
 from func_public import construct_market_prices
@@ -46,6 +46,14 @@ if FIND_COINTEGRATED:
       print("Error saving cointegrated pairs", e)
       exit(1)
 
+
+if MANAGE_EXITS:
+  try: 
+      print("manage exit ...")
+      manage_trade_exits(client)
+  except Exception as e:
+    print("Error managing exit positions", e)
+    exit(1)
 
 
 
