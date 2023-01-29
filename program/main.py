@@ -47,23 +47,26 @@ if FIND_COINTEGRATED:
       print("Error saving cointegrated pairs", e)
       exit(1)
 
-
-if MANAGE_EXITS:
-  try: 
-      print("manage exit ...")
-      manage_trade_exits(client)
-  except Exception as e:
-    print("Error managing exit positions", e)
-    exit(1)
+#Run as always running on
+while True:
 
 
+  if MANAGE_EXITS:
+    try: 
+        print("manage exit ...")
+        manage_trade_exits(client)
+    except Exception as e:
+      print("Error managing exit positions", e)
+      exit(1)
 
 
 
-if PLACE_TRADES:
-  try: 
-      print("finding trading opportunities ...")
-      open_positions(client)
-  except Exception as e:
-    print("Error trading pairs", e)
-    exit(1)
+
+
+  if PLACE_TRADES:
+    try: 
+        print("finding trading opportunities ...")
+        open_positions(client)
+    except Exception as e:
+      print("Error trading pairs", e)
+      exit(1)
