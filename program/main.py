@@ -4,6 +4,7 @@ from func_private import abort_all_positions
 from func_public import construct_market_prices
 from func_cointegration import store_cointegration_results
 from func_entry_pairs import open_positions
+from func_exit_pairs import manage_trade_exits
 
 if __name__ == "__main__":
 

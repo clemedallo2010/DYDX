@@ -14,7 +14,7 @@ FIND_COINTEGRATED = False
 MANAGE_EXITS = True
 
 # Place Trades
-PLACE_TRADES = True
+PLACE_TRADES = False
 
 # Resolution
 RESOLUTION = "1HOUR"
