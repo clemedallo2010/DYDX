@@ -3,7 +3,7 @@ from func_connections import connect_dydx
 from func_private import abort_all_positions
 from func_public import construct_market_prices
 from func_cointegration import store_cointegration_results
-from func_enty_pairs import open_positions
+from func_entry_pairs import open_positions
 
 if __name__ == "__main__":
 
