@@ -19,7 +19,6 @@ def is_open_positions(client, market):
   )
 
   # Determine if open
-  
   if len(all_positions.data["positions"]) > 0:
     return True
   else:
@@ -55,7 +54,7 @@ def place_market_order(client, market, side, size, price, reduce_only):
     size=size,
     price=price,
     limit_fee='0.015',
-    expiration_epoch_seconds=time.time()+100,
+    expiration_epoch_seconds=expiration.timestamp()+65,
     time_in_force="FOK", 
     reduce_only=reduce_only
   )

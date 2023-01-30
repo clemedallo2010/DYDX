@@ -33,9 +33,6 @@ def open_positions(client):
     open_positions_dict = json.load(open_positions_file)
     for p in open_positions_dict:
       bot_agents.append(p)
-
-      pprint(bot_agents)
-      
   except:
     bot_agents = []
   
