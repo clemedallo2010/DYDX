@@ -42,7 +42,7 @@ def place_market_order(client, market, side, size, price, reduce_only):
 
   # Get expiration time
   server_time = client.public.get_time()
-  expiration = datetime.fromisoformat(server_time.data["iso"].replace("Z", "")) + timedelta(seconds=2000)
+  expiration = datetime.fromisoformat(server_time.data["iso"].replace("Z", "")) + timedelta(seconds=10000)
 
   # Place an order
   placed_order = client.private.create_order(
@@ -54,7 +54,7 @@ def place_market_order(client, market, side, size, price, reduce_only):
     size=size,
     price=price,
     limit_fee='0.015',
-    expiration_epoch_seconds=expiration.timestamp()+65,
+    expiration_epoch_seconds=expiration.timestamp()+100,
     time_in_force="FOK", 
     reduce_only=reduce_only
   )
@@ -72,13 +72,13 @@ def abort_all_positions(client):
   client.private.cancel_all_orders()
 
   # Protect API
-  time.sleep(0.5)
+  time.sleep(1)
 
   # Get markets for reference of tick size
   markets = client.public.get_markets().data
 
   # Protect API
-  time.sleep(0.5)
+  time.sleep(1)
 
   # Get all open positions
   positions = client.private.get_positions(status="OPEN")
@@ -119,7 +119,7 @@ def abort_all_positions(client):
       close_orders.append(order)
 
       # Protect API
-      time.sleep(0.2)
+      time.sleep(1)
 
     # Override json file with empty list
     bot_agents = []
